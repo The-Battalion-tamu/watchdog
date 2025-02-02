@@ -1,20 +1,26 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '@/views/Login.vue'
 import Dashboard from '@/views/Dashboard.vue'
-import { AUTH_STORAGE_KEY, LOGIN_PATH } from '@/consts';
+import { ADD_SOURCE_PATH, AUTH_STORAGE_KEY, HOME_PATH, LOGIN_PATH } from '@/consts';
+import AddSource from '@/views/AddSource.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: HOME_PATH,
       name: 'home',
       component: Dashboard,
     },
     {
-      path: '/login', 
+      path: LOGIN_PATH, 
       name: 'Login', 
       component: Login
+    }, 
+    {
+      path: ADD_SOURCE_PATH, 
+      name: "Add Source",
+      component: AddSource
     }
   ],
 }); 
