@@ -22,6 +22,7 @@
     const router = useRouter();
 
     const handleLoginSuccess = (response) => {
+        console.log(response);
         localStorage.setItem(AUTH_STORAGE_KEY, response.credential);
         router.push('/');
     }

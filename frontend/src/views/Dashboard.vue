@@ -13,19 +13,18 @@
 <template>
     <div class="dashboard-page">
         <NavBar>
-    <template #left>
-    </template>
-    
-    <template #center>
-      <h1>Home</h1>
-    </template>
-    
-    <template #right>
-      <button @click="addSourceRedirect">Add Source</button>
-    </template>
-  </NavBar>
-    <p>this is the dashboard</p>
-        
+          <template #left>
+          </template>
+          
+          <template #center>
+            <h1>Home</h1>
+          </template>
+          
+          <template #right>
+            <button @click="addSourceRedirect">Add Source</button>
+          </template>
+        </NavBar>
+
     </div>
     
 
