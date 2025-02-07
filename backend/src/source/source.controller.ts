@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { SourceService } from './source.service';
 import { CreateSourceDto } from './DTOs/create-source.dto';
 
@@ -10,6 +10,11 @@ export class SourceController {
     @Post()
     async createSource(@Body() createSourceDto: CreateSourceDto) {
         return await this.sourceService.addSource(createSourceDto);   
+    }
+
+    @Get()
+    async getAllSources() {
+        return await this.sourceService.getAllSources();
     }
 
 }

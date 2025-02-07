@@ -17,9 +17,10 @@ export class Source {
   isRSS: boolean;
 
   @OneToMany(() => Article, (article) => article.source, { cascade: true })
+  @JoinTable()
   articles: Article[];
 
-  @ManyToMany(() => Tag, (tag) => tag.sources, {cascade: true})
+  @ManyToMany(() => Tag, (tag) => tag.sources, {cascade: false})
   @JoinTable()
   tags: Tag[];
 }

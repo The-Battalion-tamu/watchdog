@@ -14,6 +14,7 @@ export class SourceService {
         private readonly sourceRepository: Repository<Source>,
         private readonly tagService: TagService
     ) {};
+    
     async addSource(new_source: CreateSourceDto): Promise<void> {
         
         const { name, isRSS, url, tags} = new_source;
@@ -25,6 +26,10 @@ export class SourceService {
             const newly_added_source = this.sourceRepository.create({articles: [], isRSS: isRSS, tags: tag_objects, name: name, url: url});
             await this.sourceRepository.save(newly_added_source);
 
+    }
+
+    async getAllSources(): Promise<Source[]> {
+        return await this.sourceRepository.find({relations: ['tags']});
     }
 
 }
