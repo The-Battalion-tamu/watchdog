@@ -6,6 +6,8 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class TagService {
 
+    
+
     constructor(
         @InjectRepository(Tag)
         private readonly tagRepository: Repository<Tag>,
@@ -27,5 +29,9 @@ export class TagService {
         tag = this.tagRepository.create({name});
         return await this.tagRepository.save(tag);
         
+    }
+
+    async getAllTags(): Promise<Tag[]> {
+        return await this.tagRepository.find();
     }
 }
