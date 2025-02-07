@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany } from 'typeorm';
 import { Article } from '../articles/article.entity';
+import { Tag } from 'src/tags/tag.entity';
 
 @Entity()
 export class Source {
@@ -10,8 +11,14 @@ export class Source {
   name: string;
 
   @Column({ unique: true })
-  rssUrl: string;
+  url: string;
+
+  @Column()
+  isRSS: boolean;
 
   @OneToMany(() => Article, (article) => article.source, { cascade: true })
   articles: Article[];
+
+  @ManyToMany(() => Tag, (tag) => tag.sources, {cascade: false})
+  tags: Tag[];
 }

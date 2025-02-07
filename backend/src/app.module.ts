@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Article } from './articles/article.entity';
 import { Source } from './sources/source.entity';
 import * as dotenv from 'dotenv';
+import { Tag } from './tags/tag.entity';
 
 dotenv.config({path: '../.env' });
 
@@ -24,7 +25,7 @@ dotenv.config({path: '../.env' });
         rejectUnauthorized: false,
       },
     }),
-    TypeOrmModule.forFeature([Article, Source]), 
+    TypeOrmModule.forFeature([Article, Source, Tag]), 
   ],
   controllers: [AppController],
   providers: [AppService],
