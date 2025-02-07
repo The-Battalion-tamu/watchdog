@@ -3,9 +3,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Article } from './articles/article.entity';
-import { Source } from './sources/source.entity';
+import { Source } from './source/source.entity';
 import * as dotenv from 'dotenv';
-import { Tag } from './tags/tag.entity';
+import { Tag } from './tag/tag.entity';
+import { SourceController } from './source/source.controller';
+import { SourceService } from './source/source.service';
+import { TagController } from './tag/tag.controller';
+import { TagService } from './tag/tag.service';
 
 dotenv.config({path: '../.env' });
 
@@ -27,7 +31,7 @@ dotenv.config({path: '../.env' });
     }),
     TypeOrmModule.forFeature([Article, Source, Tag]), 
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, SourceController, TagController],
+  providers: [AppService, SourceService, TagService],
 })
 export class AppModule {}

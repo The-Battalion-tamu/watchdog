@@ -1,6 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany, JoinTable } from 'typeorm';
 import { Article } from '../articles/article.entity';
-import { Tag } from 'src/tags/tag.entity';
+import { Tag } from 'src/tag/tag.entity';
 
 @Entity()
 export class Source {
@@ -19,6 +19,7 @@ export class Source {
   @OneToMany(() => Article, (article) => article.source, { cascade: true })
   articles: Article[];
 
-  @ManyToMany(() => Tag, (tag) => tag.sources, {cascade: false})
+  @ManyToMany(() => Tag, (tag) => tag.sources, {cascade: true})
+  @JoinTable()
   tags: Tag[];
 }

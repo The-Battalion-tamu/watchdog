@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { Source } from '../sources/source.entity';
+import { Source } from '../source/source.entity';
 
 @Entity()
 export class Article {
